@@ -15,5 +15,5 @@ export class CreateTaskDto {
   type: string;
 
   @ApiProperty()
-  scheduleId: string;
+  scheduleId: string | never;
 }
