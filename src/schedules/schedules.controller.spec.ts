@@ -51,7 +51,7 @@ describe('SchedulesController', () => {
 
   it('create() should return newly created schedule', () => {
     expect(controller.create({
-      accountId: 1,
+      accountId: 3,
       agentId: 1,
       startTime: new Date(),
       endTime: new Date(),

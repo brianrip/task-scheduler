@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException } from '@nestjs/common';
 import { TasksService } from './tasks.service';
 import { CreateTaskDto } from './dto/create-task.dto';
 import { UpdateTaskDto } from './dto/update-task.dto';
@@ -24,8 +24,16 @@ export class TasksController {
 
   @Get(':id')
   @ApiOkResponse({ type: TaskEntity })
-  findOne(@Param('id') id: string) {
-    return this.tasksService.findOne(id);
+  async findOne(@Param('id') id: string) {
+    const task = await this.tasksService.findOne(id);
+    /**
+      I have setup exception handling for this endpoint.
+      Next step would be to handle exceptions throughout the application.
+    * */
+    if (!task) {
+      throw new NotFoundException(`Task with ${id} does not exist.`);
+    }
+    return task;
   }
 
   @Patch(':id')

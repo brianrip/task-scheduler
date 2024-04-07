@@ -20,6 +20,7 @@ export class SchedulesService {
   findOne(id: string) {
     return this.prisma.schedule.findUnique({
       where: { id },
+      include: { tasks: true },
     });
   }
 

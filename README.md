@@ -48,8 +48,11 @@ $ yarn start:dev
 ```bash
 # unit tests
 $ yarn test
+```
+# Integration Tests
+🚨 Currently, Integration tests will reset the development DB. Feel free to re-seed data after running tests with `yarn db:seed`. I am happy to talk through what an ideal integration testing environment setup would look like.
 
-# e2e tests
-$ yarn test:e2e
+```bash
+$ yarn test:integration
 
 ```
